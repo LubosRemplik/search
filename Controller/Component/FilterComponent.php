@@ -1,39 +1,31 @@
 <?php
 /**
- * Filter Component
+ * Filter Component 
  **/
-class FilterComponent extends Object {
+class FilterComponent extends Component {
     
     public $components = array();
 
-    //called before Controller::beforeFilter()
-    function initialize(&$controller, $settings = array()) {
-        // saving the controller reference for later use
-        $this->controller =& $controller;
+    function __construct(ComponentCollection $collection, $settings = array()) {
+        parent::__construct($collection, $settings);
     }
 
-    //called after Controller::beforeFilter()
-    function startup(&$controller) {
+    public function initialize($controller) {
     }
 
-    //called after Controller::beforeRender()
-    function beforeRender(&$controller) {
+    public function startup($controller) {
     }
 
-    //calledafter Controller::render()
-    function shutdown(&$controller) {
+    public function beforeRender($controller) {
     }
 
-    //called before Controller::redirect()
-    function beforeRedirect(&$controller, $url, $status=null, $exit=true) {
+    public function shutdown($controller) {
     }
 
-    function redirectSomewhere($value) {
-        // utilizing a controller method
-        $this->controller->redirect($value);
+    public function beforeRedirect($controller, $url, $status=null, $exit=true) {
     }
 	
-    function like($fields, $keywords) {
+    public function like($fields, $keywords) {
 		$conditions = array();
 		$keywords = explode(' ', $keywords);
         foreach($keywords as $keyword) {
