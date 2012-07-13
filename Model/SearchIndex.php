@@ -84,7 +84,9 @@ class SearchIndex extends AppModel {
 				$data[$key][$this->alias]['priority'] = $priorityTotal;
 			}
 			// sort
-			$data = Set::sort($data, "/$this->alias/priority", 'desc');
+			if (!empty($data)) {
+				$data = Set::sort($data, "/$this->alias/priority", 'desc');
+			}
 			$counter = 0;
 			$limitTo = $this->_limit * $query['page'];
 			$limitFrom = $limitTo - $this->_limit + 1;
