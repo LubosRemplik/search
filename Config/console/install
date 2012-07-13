@@ -1,0 +1,5 @@
+#!/bin/bash
+# Installing pages
+Console/cake frontpage.frontpage_page create -p 'Other pages' page 'Search'
+# Installing routes
+Console/cake frontpage.frontpage_route create '/search/*' -p 'Search' -c 'SearchController' -a 'index' --page '/search'
